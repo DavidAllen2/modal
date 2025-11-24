@@ -10,8 +10,8 @@ env:
   GITHUB_TOKEN: ${{ secrets.ACTION_TRIGGER_TOKEN }}
 
   # --- 仓库 1 (主仓库) ---
-  REPO_PROJECT_1: 'Github名/modal项目名' # <-- 替换 'Github项目完整名'
-  URL_PROJECT_1: 'https://tunnel-url-for-fs-modal.com' # <-- 你的隧道 URL
+  REPO_PROJECT_1: 'DavidAllen2/modal' # <-- 替换 'Github项目完整名'
+  URL_PROJECT_1: 'https://modal.ndqnom.tk' # <-- 你的隧道 URL
   DEPLOY_FILE_1: 'main.yml' # 仓库1的部署文件名
   
   # --- 仓库 2 ---
@@ -71,4 +71,5 @@ jobs:
         run: |
           echo "Project 3 隧道不通 (Status: ${{ steps.check_3.outputs.http_status }}), 正在触发..."
           curl --fail -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token $GITHUB_TOKEN" \
+
           "https://api.github.com/repos/$REPO_PROJECT_3/actions/workflows/$DEPLOY_FILE_3/dispatches" -d '{"ref":"main"}'
